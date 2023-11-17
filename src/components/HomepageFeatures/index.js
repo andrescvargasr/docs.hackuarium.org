@@ -1,64 +1,78 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import clsx from 'clsx'
+import Heading from '@theme/Heading'
+import styles from './styles.module.css'
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Simple spectro',
+    Svg: require('@site/static/img/logo-spectro.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        An affordable spectrophotometer that allows to measure precisely the
+        absorbance in red, green and blue.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Beemos',
+    Svg: require('@site/static/img/logo-beemos.svg').default,
+    description: <>Monitor bee hives.</>,
+  },
+  {
+    title: 'Incubator',
+    Svg: require('@site/static/img/logo-incubator.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Convert an expanded polystyrene foam (EPS) to an incubator for less than
+        $50.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Bioreactor',
+    link: '/docs/bioreactor',
+    Svg: require('@site/static/img/logo-bioreactor.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Control de temperature, agitation and volume using this open-source
+        bioreactor.
       </>
     ),
   },
-];
+  {
+    title: 'pHMeter',
+    link: '/docs/phmeter',
+    Svg: require('@site/static/img/logo-phmeter.svg').default,
+    description: (
+      <>Measure conductimetry and pH using this I2C connectable pH meter.</>
+    ),
+  },
+]
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className='text--center'>
+        <Svg className={styles.featureSvg} role='img' />
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
+      <div className='text--center padding-horiz--md'>
+        <Heading as='h3'>{title}</Heading>
         <p>{description}</p>
       </div>
     </div>
-  );
+  )
 }
 
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-      <div className="container">
-        <div className="row">
+      <div className='container'>
+        <div className='row'>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }
