@@ -16,6 +16,7 @@ const FeatureList = [
   },
   {
     title: 'Beemos',
+    link: '/docs/beemos',
     Svg: require('@site/static/img/logo-beemos.svg').default,
     description: <>Monitor bee hives.</>,
   },
