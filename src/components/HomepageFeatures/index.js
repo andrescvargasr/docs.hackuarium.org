@@ -5,6 +5,7 @@ import styles from './styles.module.css'
 const FeatureList = [
   {
     title: 'Simple spectro',
+    link: '/docs/spectro',
     Svg: require('@site/static/img/logo-spectro.svg').default,
     description: (
       <>
@@ -49,9 +50,15 @@ const FeatureList = [
   },
 ]
 
-function Feature({ Svg, title, description }) {
+function Feature({ Svg, title, description, link }) {
   return (
-    <div className={clsx('col col--4')}>
+    <div
+      onClick={(e) => {
+        window.location = link
+      }}
+      style={{ cursor: 'pointer' }}
+      className={clsx('col col--4')}
+    >
       <div className='text--center'>
         <Svg className={styles.featureSvg} role='img' />
       </div>
