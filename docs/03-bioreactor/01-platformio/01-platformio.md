@@ -49,7 +49,7 @@ By default some Linux versions will only give you a USB readonly access and will
 1. Check the ID for USBTinyISP:
 
 ```bash
-$ lusb
+lusb
 ```
 
 - You need to find USBtiny in the prompt:
@@ -69,7 +69,7 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 - Show Device permissions:
 
 ```bash
-$ ls -al /dev/bus/usb/001/007
+ls -al /dev/bus/usb/001/007
 ```
 
 - If you have a similar response like this:
@@ -81,7 +81,7 @@ crw-rw---- 1 root root 189, 6 Okt 2 09:45 /dev/bus/usb/001/007
 - You need to change permissions:
 
 ```bash
-$ ls -al /dev/bus/usb/001/007
+ls -al /dev/bus/usb/001/007
 ```
 
 2. In order for the USBTiny to have r/w access you should add a USB rule:

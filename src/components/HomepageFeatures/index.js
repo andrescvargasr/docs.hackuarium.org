@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Heading from '@theme/Heading'
+import Link from '@docusaurus/Link'
 import styles from './styles.module.css'
 
 const FeatureList = [
@@ -22,6 +23,7 @@ const FeatureList = [
   },
   {
     title: 'Incubator',
+    link: '/docs/incubator',
     Svg: require('@site/static/img/logo-incubator.svg').default,
     description: (
       <>
@@ -32,7 +34,7 @@ const FeatureList = [
   },
   {
     title: 'Bioreactor',
-    link: '/docs/bioreactor',
+    link: '/docs/category/bioreactor',
     Svg: require('@site/static/img/logo-bioreactor.svg').default,
     description: (
       <>
@@ -43,7 +45,7 @@ const FeatureList = [
   },
   {
     title: 'pHMeter',
-    link: '/docs/phmeter',
+    link: '/docs/category/phmeter',
     Svg: require('@site/static/img/logo-phmeter.svg').default,
     description: (
       <>Measure conductimetry and pH using this I2C connectable pH meter.</>
@@ -53,20 +55,16 @@ const FeatureList = [
 
 function Feature({ Svg, title, description, link }) {
   return (
-    <div
-      onClick={(e) => {
-        window.location = link
-      }}
-      style={{ cursor: 'pointer' }}
-      className={clsx('col col--4')}
-    >
-      <div className='text--center'>
-        <Svg className={styles.featureSvg} role='img' />
-      </div>
-      <div className='text--center padding-horiz--md'>
-        <Heading as='h3'>{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={clsx('col col--4', styles.div)}>
+      <Link className={clsx('text--center', styles.Link)} to={link}>
+        <div className='text--center'>
+          <Svg className={styles.featureSvg} role='img' />
+        </div>
+        <div className='text--center padding-horiz--md'>
+          <Heading as='h3'>{title}</Heading>
+          <p>{description}</p>
+        </div>
+      </Link>
     </div>
   )
 }
