@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_hackuarium_org=self.webpackChunkdocs_hackuarium_org||[]).push([[9661],{16863:(r,e,s)=>{s.r(e),s.d(e,{default:()=>k});s(50959);var u=s(45924),a=s(28024),c=s(17641),o=s(73797),d=s(88958),h=s(11527);function k(r){return(0,h.jsx)(a.FG,{className:(0,u.Z)(c.k.wrapper.docsPages),children:(0,h.jsx)(d.Z,{children:(0,o.H)(r.route.routes)})})}}}]);
