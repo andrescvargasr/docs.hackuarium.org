@@ -1,28 +1,53 @@
-name: Build and deploy on GitHub pages
-
+name: Build and Deploy on GitHub Pages
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
-
+      - beta
+permissions:
+  contents: write
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - name: Install dependencies
+          node-version: 18
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      # Use cache to reduce installation time.
+      - name: Get pnpm store directory
+        shell: bash
         run: |
-          npm ci
-      - name: Build
-        run: npm run build
-      - name: Deploy to GitHub pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
         with:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
-          CLEAN: true
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+          pnpm build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build # The folder the action should deploy.
+          clean: true
+          clean-exclude: |
+            CNAME
+            .nojekyll
