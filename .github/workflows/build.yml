@@ -2,6 +2,7 @@ name: Build and Deploy on GitHub Pages
 on:
   push:
     branches:
+      - main
       - beta
 permissions:
   contents: write
